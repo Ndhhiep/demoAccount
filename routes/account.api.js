@@ -4,7 +4,7 @@ const nodemailer = require('nodemailer');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const AccountModel = require('../models/account.model');
-const authToken = require('../middleware/authToken');
+const authToken = require('../middleware/authtoken');
 
 router.post('/register', async (req, res) => {
     const { email, password, phone } = req.body;

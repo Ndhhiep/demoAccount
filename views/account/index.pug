@@ -1,0 +1,36 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Account List
+    body
+        h4
+            a(href="/account/create") Create New Account
+        form(action="/account/search", method="GET")
+            label(for="search") Search Accounts:
+            input(type="text", name="search", placeholder="Search by email")
+            button(type="submit") Search
+        h1 Account List
+
+        table
+            thead
+                tr
+                    th Email
+                    th Password
+                    th Phone
+                    th Image
+            tbody
+                if accounts.length > 0
+                    each account in accounts
+                        tr
+                            td= account.email
+                            td= account.password
+                            td= account.phone
+                            td
+                                img(src=`/public/${account.image}`, 
+                                alt="Account Image", 
+                                style="width: 200px; height: auto;")
+                else
+                    tr
+                        td(colspan="4") No accounts found.

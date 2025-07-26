@@ -1,0 +1,41 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Create New Account
+    body
+        h1 Create New Account
+        if errors && errors.length > 0
+            div.error
+                ul
+                    each error in errors
+                        li(style="color:red")= error.msg
+        form(action="/account/create", method="POST", enctype="multipart/form-data")
+
+            div
+                label(for="email") Email:
+                input(type="email", name="email")
+            
+            div
+                label(for="password") Password:
+                input(type="password", name="password")
+                br
+                label(for="confirm") Confirm Password:
+                input(type="password", name="confirm")
+                if errors 
+                    each error in errors
+                        if error.path === 'password'
+                            div(style="color:red")= error.msg
+            div
+                label(for="phone") Phone:
+                input(type="text", name="phone")
+
+            div
+                label(for="image") Image:
+                input(type="file", name="image", accept="image/*")
+            
+            div
+                button(type="submit") Create Account
+
+        a(href="/account") Back to Account List

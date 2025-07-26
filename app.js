@@ -19,7 +19,7 @@ mongoose.connect("mongodb+srv://hiep1112k:<Ndhh1112k@>@cluster0.dnypflq.mongodb.
   .catch((err) => console.log(`Connection Error: ${err}`));
 
 app.use(cors({
-  origin: 'http://localhost:5173', // React app URL
+  origin: process.env.CLIENT_URL, // React app URL
   credentials: true
 }));
 
